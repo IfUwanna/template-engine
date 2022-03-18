@@ -1,0 +1,5 @@
+Name: <?=USER.info.name.given ?> <?=USER.info.name.family?>\n
+<? for ADDR in USER.info.addrs ?>
+Address : <?= ADDR.addr1?> <?= ADDR.addr2?>\n
+<? endfor ?>
+\n
