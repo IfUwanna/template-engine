@@ -1,10 +1,10 @@
 package com.template.resolver;
 
-import com.template.util.TemplateProperties;
+import com.template.util.PropertieUtil;
 
 import java.io.Reader;
 
-import static com.template.PropertieType.PROPERTIE_PREFIX_DATA;
+import static com.template.constant.Propertie.PROPERTIE_PREFIX_DATA;
 
 /**
  * packageName    : com.template.resolver
@@ -29,6 +29,6 @@ public interface Resolver {
      * @return string
      */
     static String getDataFullPath(String data){
-        return TemplateProperties.getInstance().getValue(PROPERTIE_PREFIX_DATA.getKey()) + data;
+        return PropertieUtil.getInstance().getValue(PROPERTIE_PREFIX_DATA.getKey()) + data;
     }
 }

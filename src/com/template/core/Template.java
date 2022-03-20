@@ -1,10 +1,10 @@
 package com.template.core;
 
-import com.template.util.TemplateProperties;
+import com.template.util.PropertieUtil;
 
 import java.io.Writer;
 
-import static com.template.PropertieType.PROPERTIE_PREFIX_TEMPLATE;
+import static com.template.constant.Propertie.PROPERTIE_PREFIX_TEMPLATE;
 
 /**
  * packageName    : com.template.core
@@ -49,7 +49,7 @@ public interface Template {
      * @return string
      */
     static String getTemplateFullPath(String templateName){
-        return TemplateProperties.getInstance().getValue(PROPERTIE_PREFIX_TEMPLATE.getKey()) + templateName;
+        return PropertieUtil.getInstance().getValue(PROPERTIE_PREFIX_TEMPLATE.getKey()) + templateName;
     }
 
 }

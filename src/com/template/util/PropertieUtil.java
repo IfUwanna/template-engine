@@ -8,29 +8,29 @@ import java.util.Properties;
 
 /**
  * packageName    : com.template.util
- * fileName       : TemplateProperties
+ * fileName       : PropertieUtil
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    : TemplateProperties (singleton)
+ * description    : Propertie Util (singleton)
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2022/03/18        Jihun Park       최초 생성
  */
-public class TemplateProperties {
+public class PropertieUtil {
 
-    private static TemplateProperties templateProperties;
+    private static PropertieUtil propertieUtil;
     private static Properties properties;
     private static final String PROPERTIES_PATH = "./template.properties";
 
-    public static TemplateProperties getInstance() {
-        if (templateProperties == null) {
-            templateProperties = new TemplateProperties();
+    public static PropertieUtil getInstance() {
+        if (propertieUtil == null) {
+            propertieUtil = new PropertieUtil();
         }
-        return templateProperties;
+        return propertieUtil;
     }
 
-    private TemplateProperties() {
+    private PropertieUtil() {
         FileInputStream fis = null;
 
         try {
@@ -48,12 +48,9 @@ public class TemplateProperties {
         }
     }
 
-    public String getValue(String name) {
-        String returnValue = "";
-        if (properties != null) {
-            returnValue = properties.getProperty(name);
-        }
-        return returnValue;
+    public static String getValue(String name) {
+        String value = getInstance().properties == null? "" : getInstance().properties.getProperty(name);
+        return value;
     }
 /*
     public int getIntValue(String name) {

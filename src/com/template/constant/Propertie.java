@@ -1,17 +1,17 @@
-package com.template;
+package com.template.constant;
 
 /**
- * packageName    : com.template
- * fileName       : ENUM
+ * packageName    : com.template.constant
+ * fileName       : Propertie
  * author         : Jihun Park
  * date           : 2022/03/19
- * description    :
+ * description    : template.properties Key
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2022/03/19        Jihun Park       최초 생성
  */
-public enum PropertieType {
+public enum Propertie {
 
     PROPERTIE_PREFIX_TEMPLATE("prefix.template"),
     PROPERTIE_PREFIX_DATA("prefix.data"),
@@ -20,7 +20,7 @@ public enum PropertieType {
 
     private final String _key;
 
-    PropertieType(String key) {
+    Propertie(String key) {
         this._key = key;
     }
 
