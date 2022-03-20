@@ -1,10 +1,12 @@
 package com.template.core;
 
+import com.template.constant.Propertie;
+import com.template.resolver.Resolver;
 import com.template.util.PropertieUtil;
 
 import java.io.Writer;
 
-import static com.template.constant.Propertie.PROPERTIE_PREFIX_TEMPLATE;
+import static com.template.constant.Propertie.*;
 
 /**
  * packageName    : com.template.core
@@ -20,11 +22,12 @@ import static com.template.constant.Propertie.PROPERTIE_PREFIX_TEMPLATE;
 public interface Template {
 
     /**
-     * methodName : init
+     * methodName : readData
      * author : Jihun Park
-     * description : initialize Template
+     * description : read data
+     * @param resolver
      */
-    void init();
+    void readData(Resolver resolver);
 
     /**
      * methodName : convert
@@ -36,7 +39,7 @@ public interface Template {
     /**
      * methodName : write
      * author : Jihun Park
-     * description : writer contents
+     * description : writer result
      * @param writer
      */
     void write(Writer writer);
@@ -49,7 +52,7 @@ public interface Template {
      * @return string
      */
     static String getTemplateFullPath(String templateName){
-        return PropertieUtil.getInstance().getValue(PROPERTIE_PREFIX_TEMPLATE.getKey()) + templateName;
+        return PropertieUtil.getValue(PREFIX_TEMPLATE.getKey()) + templateName;
     }
 
 }

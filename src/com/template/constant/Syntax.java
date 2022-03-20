@@ -1,7 +1,5 @@
 package com.template.constant;
 
-import com.template.exception.TemplateException;
-
 /**
  * packageName    : com.template.constant
  * fileName       : Syntax
@@ -18,7 +16,7 @@ public enum Syntax {
     PREFIX("<?"),
     SUFFIX("?>"),
     ITERATION_PREFIX("<? for"),
-    ITERATION_SUFFIX("<? endfor");
+    ITERATION_SUFFIX("<? endfor ?>");
 
     private final String ex;
 

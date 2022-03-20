@@ -2,27 +2,29 @@ package com.template.resolver;
 
 import com.template.exception.TemplateException;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
  * packageName    : com.template.resolver
- * fileName       : WebResolver
+ * fileName       : URIResolver
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    :
+ * description    : URI Resolver (확장 예시)
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2022/03/18        Jihun Park       최초 생성
  */
-public class WebResolver implements Resolver {
+public class URIResolver implements Resolver {
 
     private String resource;
 
-    public WebResolver(String resource) {
+    public URIResolver(String resource) {
         this.resource = resource;
     }
 

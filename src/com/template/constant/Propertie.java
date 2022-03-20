@@ -13,10 +13,13 @@ package com.template.constant;
  */
 public enum Propertie {
 
-    PROPERTIE_PREFIX_TEMPLATE("prefix.template"),
-    PROPERTIE_PREFIX_DATA("prefix.data"),
-    PROPERTIE_TEMPLATE("template"),
-    PROPERTIE_DATA("data");
+    PATH("./template.properties"),
+    PREFIX_TEMPLATE("prefix.template"),
+    PREFIX_DATA("prefix.data"),
+    PREFIX_RESULT("prefix.result"),
+    TEMPLATE("template"),
+    DATA("data"),
+    RESULT("result");
 
     private final String _key;
 

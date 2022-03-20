@@ -1,17 +1,13 @@
 package com.template.resolver;
 
-import com.template.util.PropertieUtil;
-
 import java.io.Reader;
-
-import static com.template.constant.Propertie.PROPERTIE_PREFIX_DATA;
 
 /**
  * packageName    : com.template.resolver
  * fileName       : BaseResolver
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    :
+ * description    : Resolver (to read data)
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
@@ -19,16 +15,12 @@ import static com.template.constant.Propertie.PROPERTIE_PREFIX_DATA;
  */
 public interface Resolver {
 
+    /**
+     * methodName : getReader
+     * author : Jihun Park
+     * description : get Reader
+     * @return reader
+     */
     Reader getReader();
 
-    /**
-     * methodName : getDataFullPath
-     * author : Jihun Park
-     * description :
-     * @param data
-     * @return string
-     */
-    static String getDataFullPath(String data){
-        return PropertieUtil.getInstance().getValue(PROPERTIE_PREFIX_DATA.getKey()) + data;
-    }
 }

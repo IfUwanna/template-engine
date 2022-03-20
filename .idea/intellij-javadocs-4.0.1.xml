@@ -62,6 +62,22 @@
       </CONSTRUCTORS>
       <METHODS>
         <METHOD>
+          <KEY>.+</KEY>
+          <VALUE>/**\n
+	* methodName    : ${element.getName()}\n
+	* author        : Jihun Park\n
+	* description   : \n
+&lt;#if element.typeParameters?has_content&gt;	 * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;         * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt;&lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${paramNames[parameter.name]}\n
+&lt;/#list&gt;&lt;#if isNotVoid&gt;         *\n
+         * @return ${return}\n
+&lt;/#if&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+        </METHOD>
+        <METHOD>
           <KEY>^.*(public|protected|private)*\s*.*(\w(\s*&lt;.+&gt;)*)+\s+get\w+\s*\(.*\).+</KEY>
           <VALUE>/**\n 
 
@@ -98,22 +114,6 @@
      &lt;#if element.parameterList.parameters?has_content&gt;         *\n
 &lt;/#if&gt;     * @param ${element.parameterList.parameters[0].name} the input arguments\n
 &lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
-&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
-&lt;/#list&gt; */</VALUE>
-        </METHOD>
-        <METHOD>
-          <KEY>.+</KEY>
-          <VALUE>/**\n
-	* methodName    : ${element.getName()}\n
-	* author        : Jihun Park\n
-	* description   : \n
-&lt;#if element.typeParameters?has_content&gt;	 * \n
-&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;         * @param &lt;${typeParameter.name}&gt; the type parameter\n
-&lt;/#list&gt;&lt;#if element.parameterList.parameters?has_content&gt;         *\n
-&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${paramNames[parameter.name]}\n
-&lt;/#list&gt;&lt;#if isNotVoid&gt;         *\n
-         * @return ${return}\n
-&lt;/#if&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
 &lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
 &lt;/#list&gt; */</VALUE>
         </METHOD>

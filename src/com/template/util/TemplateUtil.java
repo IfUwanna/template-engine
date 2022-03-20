@@ -2,8 +2,17 @@ package com.template.util;
 
 import com.template.constant.Syntax;
 import com.template.exception.TemplateException;
+import com.template.resolver.Resolver;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
+import java.util.stream.Collectors;
+
+import static com.template.constant.Propertie.*;
+import static com.template.constant.Syntax.*;
 
 /**
  * packageName    : com.template.util
@@ -18,111 +27,175 @@ import org.json.simple.JSONObject;
  */
 public class TemplateUtil {
 
-    public static String convertTemplate(String template, JSONArray jsonArray) {
-
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < jsonArray.size(); i++) {
-
-            //JSONObject user = (JSONObject) users.get(i);
-            String temp = template;
-
-            // expression pointers
-            int start = temp.indexOf(Syntax.PREFIX.getEx());
-            int end = temp.indexOf(Syntax.SUFFIX.getEx(), start) + Syntax.SUFFIX.getExLength();
-
-            while(start != -1){
-
-                // extract template expression
-                String templateEx = temp.substring(start,end);
-
-                if(templateEx.indexOf(Syntax.ITERATION_PREFIX.getEx()) > -1){  /* iteration operation */
-
-                    // extract iteration expression
-                    int forEnd = temp.indexOf(Syntax.SUFFIX.getEx(), temp.indexOf(Syntax.ITERATION_SUFFIX.getEx(), start)) + Syntax.SUFFIX.getExLength(); // 처음 만나는 endfor부터 시작해서 첫 괄호닫히는 부분 +2칸까지 하면 for 통째로
-                    String forEx = temp.substring(start, forEnd);
-
-                    // extract iteration info
-                    String targetName = templateEx.split(" ")[2].trim();       // targetName : ADDR
-                    String targetKey = templateEx.split(" ")[4].trim();        // targetKey : USER.info.addrs
-                    int innerEnd = temp.indexOf(Syntax.ITERATION_SUFFIX.getEx(), start);
-                    String innerTemplate = temp.substring(end, innerEnd);   // innerText
-
-                    // get iteration value
-                    Object value = getValue(jsonArray.get(i), targetKey);
-                    JSONArray arrValue = (JSONArray) value;
-                    StringBuilder allArrayResult = new StringBuilder();
-                    for (int j = 0; j < arrValue.size(); j++) {// array별
-                        String innerTemp = innerTemplate;
-                        String innerEx = TemplateUtil.extractExpression(innerTemplate);
-                        while(!innerEx.isEmpty()){
-                            JSONObject jsonObject = (JSONObject) arrValue.get(j);
-                            String replaceKey = innerEx.substring(3, innerEx.length() - Syntax.SUFFIX.getExLength()).trim();
-                            Object innerValue = getValue(jsonObject, replaceKey);
-                            innerTemp = innerTemp.replace(innerEx,(String)innerValue);
-                            innerEx = TemplateUtil.extractExpression(innerTemp);
-                        }
-                        // 하나의 배열 결과 기록
-                        allArrayResult.append(innerTemp);
-                    }
-                    // replace template
-                    temp = temp.replace(forEx,allArrayResult.toString());
-
-                }else{  /* replace operation */
-
-                    // extract replaceKey
-                    String replaceKey = templateEx.substring(3, templateEx.length() - Syntax.SUFFIX.getExLength()).trim();
-
-                    // get replace value
-                    Object value = getValue(jsonArray.get(i), replaceKey);
-
-                    // replace template
-                    temp = temp.replace(templateEx,(String)value);
-                }
-                // move next expression
-                start = temp.indexOf(Syntax.PREFIX.getEx());
-                end = temp.indexOf(Syntax.SUFFIX.getEx(),start) + Syntax.SUFFIX.getExLength();
-            }
-            // append result
-            sb.append(temp.replace("\\n",System.lineSeparator()));
+    /**
+     * methodName : read Template
+     * author : Jihun Park
+     * description : read template file
+     */
+    public static String readTemplate(String templatePath){
+        try{
+            BufferedReader bf = new BufferedReader(new FileReader(templatePath));
+            String template =  bf.lines().collect(Collectors.joining());
+            bf.close();
+            return template;
+        }catch(FileNotFoundException e){
+            throw new TemplateException("템플릿 파일을 찾을 수 없습니다.: " + templatePath);
+        } catch (IOException e) {
+            throw new TemplateException("템플릿 파일을 읽어들이는 중 오류가 발생하였습니다.: " + templatePath);
         }
-        // result
-        return sb.toString();
+    }
+
+    /**
+     * methodName : readData
+     * author : Jihun Park
+     * description : read Data(Json)
+     */
+    public static JSONArray readData(Resolver resolver){
+
+        try {
+            JSONArray data = new JSONArray();
+            Object obj = new JSONParser().parse(resolver.getReader());
+            if (obj instanceof JSONArray) {
+                data = (JSONArray)obj;
+            }else if (obj instanceof JSONObject) {
+                JSONObject jsonObject = (JSONObject)obj;
+                data.add(jsonObject);
+            }
+            return data;
+        } catch (IOException e) {
+            throw new TemplateException("data 파일을 읽어들이는 중 오류가 발생하였습니다. : " + e.getMessage());
+        } catch (ParseException e) {
+            throw new TemplateException("data 파일 파싱 중 오류가 발생하였습니다. : " + e.getMessage());
+        }
     }
 
 
+    public static String convertTemplate(String template, JSONArray jsonArray) {
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < jsonArray.size(); i++) {
+            sb.append(convertTemplate(template, (JSONObject) jsonArray.get(i)));
+        }
+        return sb.toString();
+    }
+
+    public static String convertTemplate(String template, JSONObject jsonObject) {
+
+        // extract expression
+        String expression = TemplateUtil.extractExpression(template);
+
+        while(!expression.isEmpty()){
+
+            if(expression.indexOf(ITERATION_PREFIX.getEx()) > -1){  /*== iteration operation ==*/
+
+                int start = template.indexOf(PREFIX.getEx());
+                int end = template.indexOf(SUFFIX.getEx(), start) + SUFFIX.getExLength();
+
+                // extract iteration expression
+                int forEnd = template.indexOf(ITERATION_SUFFIX.getEx(),start) + ITERATION_SUFFIX.getExLength();
+                String forExpression = template.substring(start, forEnd); // 반복문 전체 추출
+
+                // extract innerTemplate
+                int innerTemplateEnd = template.indexOf(ITERATION_SUFFIX.getEx(), start);
+                String innerTemplate = template.substring(end, innerTemplateEnd);
+
+                // get iteration value
+                String targetKey = expression.split(" ")[4].trim();   // targetKey : USER.info.addrs > addrs[]
+                Object value = getValue(jsonObject, targetKey);
+                JSONArray arrValue = (JSONArray) value;
+
+                // convert innerTemplate (recursion)
+                StringBuilder innerResult = new StringBuilder();
+                innerResult.append(convertTemplate(innerTemplate,arrValue));
+
+                // replace template
+                template = template.replace(forExpression,innerResult.toString());
+
+            }else{  /*== replace operation ==*/
+
+                // extract replaceKey
+                String replaceKey = expression.substring(3, expression.length() - SUFFIX.getExLength()).trim();
+
+                // get replace value
+                Object value = getValue(jsonObject, replaceKey);
+
+                // replace template
+                template = template.replace(expression,(String)value);
+            }
+            // next expression
+            expression = TemplateUtil.extractExpression(template);
+        }
+
+        template = template.replace("\\n",System.lineSeparator());
+        // return result
+        return template;
+    }
+
+
+    /**
+     * methodName : extractExpression
+     * author : Jihun Park
+     * description : extract Expression <? ~ ?>
+     * @param template
+     * @return string
+     */
     public static String extractExpression(String template){
 
         try{
-            int start = template.indexOf(Syntax.PREFIX.getEx());
-            int end = template.indexOf(Syntax.SUFFIX.getEx(), start) + Syntax.SUFFIX.getExLength();
+            int start = template.indexOf(PREFIX.getEx());
+            int end = template.indexOf(SUFFIX.getEx(), start) + SUFFIX.getExLength();
             if(start < 0) return "";
             return template.substring(start,end);
 
         }catch(Exception e){
-            throw new TemplateException("표현식을 추출할 수 없습니다. : " + e.getMessage());
+            throw new TemplateException("표현식 추출 중 오류가 발생하였습니다. : " + e.getMessage());
         }
     }
 
-    public static Object getValue(Object obj, String Key) {
+    /**
+     * methodName : getValue
+     * author : Jihun Park
+     * description :
+     * @param obj
+     * @param key
+     * @return object
+     */
+    public static Object getValue(Object obj, String key) {
 
-        String[] key = Key.split("\\.");
+        try {
+            String[] keys = key.split("\\.");
 
-        for (int j = 1; j < key.length; j++) {
-            if (obj instanceof JSONArray) {
-                JSONArray jsonArray =(JSONArray) obj;
-                int index = Integer.valueOf(key[j]);
-                if(jsonArray.size() > index){
-                    obj =  jsonArray.get(index);
-                }else{
-                    obj = ""; break;
+            for (int j = 1; j < keys.length; j++) {
+                if (obj instanceof JSONArray) {
+                    JSONArray jsonArray = (JSONArray) obj;
+                    int index = Integer.valueOf(keys[j]);
+                    if (jsonArray.size() > index) {
+                        obj = jsonArray.get(index);
+                    } else {
+                        obj = "";
+                        break;
+                    }
+                } else if (obj instanceof JSONObject) {
+                    obj = ((JSONObject) obj).get(keys[j]);
                 }
-            }else if (obj instanceof JSONObject) {
-                obj = ((JSONObject) obj).get(key[j]);
             }
+            if (obj == null) throw new TemplateException("유효하지 않은 변환식입니다. : " + keys);
+            return obj;
+        }catch(Exception e){
+            throw new TemplateException("데이터 변환 중 오류가 발생하였습니다. : " + e.getMessage());
         }
-        if(obj == null)throw new TemplateException("유효하지 않은 변환 식입니다. : "  + Key);
 
-        return obj;
     }
+
+    public static FileWriter getDefaultFileWriter(){
+
+        try {
+            File file = new File(PropertieUtil.getValue(PREFIX_RESULT.getKey()) + PropertieUtil.getValue(RESULT.getKey()));
+            FileWriter fileWriter = new FileWriter(file);
+            return fileWriter;
+        } catch (IOException e) {
+            throw new TemplateException("파일 쓰기 준비 중 오류가 발생하였습니다.  : "  + e.getMessage());
+        }
+    }
+
 }
