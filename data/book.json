@@ -1,0 +1,54 @@
+[
+  {
+    "info": {
+      "name" : "수학책",
+      "contents": [
+        {
+          "title": "목차1",
+          "description": "111"
+        },
+        {
+          "title": "목차2",
+          "description": "222"
+        },
+        {
+          "title": "목차3",
+          "description": "333"
+        }
+      ]
+    },
+    "quantity": {
+      "total": "100",
+      "ordered": "3",
+      "remain": "97"
+    },
+    "price": {
+      "normal": "10000",
+      "sale": "9000",
+    }
+  },
+  {
+    "info": {
+      "name" : "도덕책",
+      "contents": [
+        {
+          "title": "목차1",
+          "description": "111"
+        },
+        {
+          "title": "목차2",
+          "description": "222"
+        }
+      ]
+    },
+    "quantity": {
+      "total": "999",
+      "ordered": "7",
+      "remain": "992"
+    },
+    "price": {
+      "normal": "30000",
+      "sale": "9000"
+    }
+  }
+]

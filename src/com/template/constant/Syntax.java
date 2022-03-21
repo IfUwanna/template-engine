@@ -15,6 +15,7 @@ public enum Syntax {
 
     PREFIX("<?"),
     SUFFIX("?>"),
+    REPLACE_PREFIX("<?="),
     ITERATION_PREFIX("<? for"),
     ITERATION_SUFFIX("<? endfor ?>");
 

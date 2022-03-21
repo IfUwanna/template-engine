@@ -23,20 +23,13 @@ public class Main {
         // initialize Template
         Template template = new UserTemplate(templateName, new FileResolver(data));  // initialize Template(template + File data)
 //        Template template = new UserTemplate(templateName, new URIResolver(data)); // initialize Template(template + URI data)
-//        Template template = new UserTemplate(templateName);  // initialize Template (only template)
-//        template.readData(new FileResolver(data));           // read data (file)
-//        template.readData(new URIResolver(data));          // read data (URI)
 
         // convert Data
         template.convert();
 
         // write
-        template.write(TemplateUtil.getDefaultFileWriter());
-        template.write(new PrintWriter(System.out)); // System print
-
-
-
-
+        template.write(TemplateUtil.getDefaultFileWriter()); // write file
+        template.write(new PrintWriter(System.out)); // write System
 
     }
 

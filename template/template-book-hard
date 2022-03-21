@@ -1,0 +1,11 @@
+[Book Info]\n
+<? for NAME in BOOKS.*.info.name ?>
+NAME : <?= NAME ?>\n
+<? endfor ?>
+<? for CONTENTS in BOOKS.*.info.contents ?>
+contents : <?= CONTENTS.title?> <?= CONTENTS.description?>\n
+<? endfor ?>
+<? for PRICE in BOOKS.*.price.normal ?>
+price : <?= PRICE?>\n
+<? endfor ?>
+\n

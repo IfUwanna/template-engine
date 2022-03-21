@@ -1,13 +1,12 @@
 package com.template.util;
 
-import com.template.constant.Propertie;
 import com.template.exception.TemplateException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static com.template.constant.Propertie.*;
+import static com.template.constant.Propertie.PATH;
 
 /**
  * packageName    : com.template.util

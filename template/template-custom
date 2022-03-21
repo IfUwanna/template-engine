@@ -1,13 +1,8 @@
-Family name: <?=USER.info.name.family?>\n
-Given name: <?=USER.info.name.given ?>\n
-Address[0] : <?= USER.info.addrs.0.addr1?> <?= USER.info.addrs.0.addr2?>\n
-Address[1] : <?= USER.info.addrs.1.addr1?> <?= USER.info.addrs.1.addr2?>\n
-Address[2] : <?= USER.info.addrs.2.addr1?> <?= USER.info.addrs.2.addr2?>\n
-Address[3] : <?= USER.info.addrs.3.addr1?> <?= USER.info.addrs.3.addr2?>\n
-MemberShip : <?=USER.membership.grade?> <?= USER.membership.id  ?>\n
-<? for ADDR in USER.info.addrs ?>
-Address : <?= ADDR.addr1?> <?= ADDR.addr2?>\n
+[User Info]\n
+<? for ADDRS in USERS.*.info.addrs ?>
+Address : <?= ADDRS.addr1?> <?= ADDRS.addr2?>\n
 <? endfor ?>
-Family name: <?=USER.info.name.family?>\n
-Given name: <?=USER.info.name.given ?>\n
+<? for ID in USERS.*.membership.id ?>
+Membership Id : <?= ID ?>\n
+<? endfor ?>
 \n

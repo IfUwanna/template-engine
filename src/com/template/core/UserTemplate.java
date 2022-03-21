@@ -31,14 +31,14 @@ public class UserTemplate implements Template {
 
     public UserTemplate(String templateName) {
         this.templatePath = getTemplateFullPath(templateName);
-        this.template = TemplateUtil.readTemplate(templatePath);
+        this.template = TemplateUtil.readTemplate(templatePath);   //read Template file
     }
 
     public UserTemplate(String templateName, Resolver resolver) {
         this.templatePath = getTemplateFullPath(templateName);
-        this.template = TemplateUtil.readTemplate(templatePath);
+        this.template = TemplateUtil.readTemplate(templatePath);    //read Template file
         this.resolver = resolver;
-        this.data = TemplateUtil.readData(resolver);
+        this.data = TemplateUtil.readData(resolver);    //read data
     }
 
     @Override
@@ -48,14 +48,17 @@ public class UserTemplate implements Template {
 
     @Override
     public void convert() {
-        result = TemplateUtil.convertTemplate(template, data);
+        result = TemplateParser.convertTemplate(template, data);
+        if(result.lastIndexOf("\n") == result.length()-1){
+            result =  result.substring(0,result.length()-1);
+        }
     }
 
     @Override
     public void write(Writer writer) {
         try {
             writer.write(result);
-            System.out.println("성공적으로 출력 되었습니다.");
+            System.out.println("성공적으로 출력 되었습니다. : "  + writer.getClass().getSimpleName());
             writer.close();
         } catch (IOException e) {
             throw new TemplateException("결과 출력 중 오류가 발생하였습니다.: " + e.getMessage());

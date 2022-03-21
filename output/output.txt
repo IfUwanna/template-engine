@@ -1,9 +1,10 @@
-Name: HS KIM
-Address : ABC CDE
-
-Name: John Doe
-Address : AAA BBB
-Address : 123 234
-
-Name: Jane Doe
-
+[Book Info]
+NAME : 수학책
+NAME : 도덕책
+contents : 목차1 111
+contents : 목차2 222
+contents : 목차3 333
+contents : 목차1 111
+contents : 목차2 222
+price : 10000
+price : 30000
