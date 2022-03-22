@@ -16,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
 
         // 0. Operation Option (1st args > 2nd:properties)
-        String templateName =  (args.length<=2||args[0].isBlank())? PropertieUtil.getValue(TEMPLATE.getKey()):args[0];
-        String data = (args.length<=2||args[1].isBlank())?  PropertieUtil.getValue(DATA.getKey()) : args[1];
+        String templateName =  (args.length<2||args[0].isBlank())? PropertieUtil.getValue(TEMPLATE.getKey()):args[0];
+        String data = (args.length<2||args[1].isBlank())?  PropertieUtil.getValue(DATA.getKey()) : args[1];
 
         // 1. Initialize Template
         Template template = new DefaultTemplate(templateName, new FileResolver(data));  // initialize Template(template + File data)
