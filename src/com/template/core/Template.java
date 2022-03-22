@@ -2,9 +2,7 @@ package com.template.core;
 
 import com.template.resolver.Resolver;
 import com.template.util.PropertieUtil;
-
 import java.io.Writer;
-
 import static com.template.constant.Propertie.PREFIX_TEMPLATE;
 
 /**
@@ -53,5 +51,6 @@ public interface Template {
     static String getTemplateFullPath(String templateName){
         return PropertieUtil.getValue(PREFIX_TEMPLATE.getKey()) + templateName;
     }
+
 
 }

@@ -1,10 +1,7 @@
-[Book Info]
-NAME : 수학책
-NAME : 도덕책
-contents : 목차1 111
-contents : 목차2 222
-contents : 목차3 333
-contents : 목차1 111
-contents : 목차2 222
-price : 10000
-price : 30000
+[User Info]
+Address : ABC CDE
+Address : AAA BBB
+Address : 123 234
+Membership Id : 12345
+Membership Id : 67890
+Membership Id : 99999

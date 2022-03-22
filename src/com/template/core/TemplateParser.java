@@ -154,8 +154,13 @@ public class TemplateParser {
         return template;
     }
 
-
-
+    /**
+     * methodName : extractExpression
+     * author : Jihun Park
+     * description : extract Expression <? ~ ?>
+     * @param template
+     * @return string
+     */
     private static boolean isTopTemplate(String template){
 
         int start = template.indexOf(ITERATION_PREFIX.getEx());
@@ -196,7 +201,7 @@ public class TemplateParser {
     /**
      * methodName : extractIterationExpression
      * author : Jihun Park
-     * description :
+     * description : extract iteration expression <? for ~ ?>
      * @param template
      * @return string
      */
@@ -213,6 +218,13 @@ public class TemplateParser {
         }
     }
 
+    /**
+     * methodName : extractForExpression
+     * author : Jihun Park
+     * description : extract for expression  <? for ~ ?> [innerTemplate] <? endfor ?>
+     * @param template
+     * @return string
+     */
     private static String extractForExpression(String template){
 
         try{
@@ -225,6 +237,13 @@ public class TemplateParser {
         }
     }
 
+    /**
+     * methodName : extractForInnerTemplate
+     * author : Jihun Park
+     * description : extract for InnerTemplate
+     * @param forExpression
+     * @return string
+     */
     private static String extractForInnerTemplate(String forExpression){
 
         try{

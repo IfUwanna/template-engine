@@ -5,7 +5,7 @@ package com.template.constant;
  * fileName       : Propertie
  * author         : Jihun Park
  * date           : 2022/03/19
- * description    : template.properties Key
+ * description    : Propertie Enum
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------

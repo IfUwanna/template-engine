@@ -18,7 +18,7 @@ import static com.template.constant.Propertie.RESULT;
  * fileName       : TemplateUtil
  * author         : Jihun Park
  * date           : 2022/03/20
- * description    :
+ * description    : Template Util
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------

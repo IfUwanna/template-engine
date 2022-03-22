@@ -31,14 +31,14 @@ public class UserTemplate implements Template {
 
     public UserTemplate(String templateName) {
         this.templatePath = getTemplateFullPath(templateName);
-        this.template = TemplateUtil.readTemplate(templatePath);   //read Template file
+        this.template = TemplateUtil.readTemplate(templatePath);
     }
 
     public UserTemplate(String templateName, Resolver resolver) {
         this.templatePath = getTemplateFullPath(templateName);
-        this.template = TemplateUtil.readTemplate(templatePath);    //read Template file
+        this.template = TemplateUtil.readTemplate(templatePath);
         this.resolver = resolver;
-        this.data = TemplateUtil.readData(resolver);    //read data
+        this.data = TemplateUtil.readData(resolver);
     }
 
     @Override
@@ -65,10 +65,10 @@ public class UserTemplate implements Template {
         }
     }
 
+    /* Getter, Setter */
     public String getTemplatePath(String templatePath) {
         return this.templatePath;
     }
-
     public void setTemplatePath(String templatePath) {
         this.templatePath = getTemplatePath(templatePath);
         this.template = TemplateUtil.readTemplate(templatePath);
@@ -77,7 +77,6 @@ public class UserTemplate implements Template {
     public Resolver getResolver() {
         return resolver;
     }
-
     public void setResolver(Resolver resolver) {
         this.resolver = resolver;
         this.data = TemplateUtil.readData(resolver);

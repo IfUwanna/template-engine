@@ -5,7 +5,7 @@ package com.template.constant;
  * fileName       : Syntax
  * author         : Jihun Park
  * date           : 2022/03/20
- * description    :
+ * description    : Syntax Enum
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
