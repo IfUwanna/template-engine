@@ -6,5 +6,3 @@ Address : <?= ADDRS.addr1?> <?= ADDRS.addr2?>\n
 Membership Id : <?= ID ?>\n
 <? endfor ?>
 \n
-
-620913 2806413

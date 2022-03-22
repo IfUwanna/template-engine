@@ -14,7 +14,7 @@ import java.net.URL;
  * fileName       : URIResolver
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    : URI Resolver (확장 예시)
+ * description    : URI Resolver (구현 확장 예시)
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------

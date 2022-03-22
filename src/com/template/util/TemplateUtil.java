@@ -10,8 +10,7 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.stream.Collectors;
 
-import static com.template.constant.Propertie.PREFIX_RESULT;
-import static com.template.constant.Propertie.RESULT;
+import static com.template.constant.Propertie.*;
 
 /**
  * packageName    : com.template.util

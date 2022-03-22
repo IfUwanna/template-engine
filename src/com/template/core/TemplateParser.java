@@ -11,7 +11,7 @@ import static com.template.constant.Syntax.*;
  * fileName       : TemplateParser
  * author         : Jihun Park
  * date           : 2022/03/21
- * description    :
+ * description    : Template Parser
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
@@ -30,9 +30,9 @@ public class TemplateParser {
     public static String convertTemplate(String template, JSONArray jsonArray) {
 
         if(isTopTemplate(template)){
-            return convertTopTemplate(template,jsonArray); // Top Template (Hard)
+            return convertTopTemplate(template,jsonArray); // Top Template
         }else{
-            return convertEachTemplate(template,jsonArray); // Each Template (Easy,Medium)
+            return convertEachTemplate(template,jsonArray); // Each Template
         }
     }
 
