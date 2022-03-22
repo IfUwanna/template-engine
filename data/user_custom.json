@@ -2,6 +2,33 @@
   {
     "info": {
       "name": {
+        "family": "박",
+        "given": "지훈",
+        "middle": "한국사람이라 없지요"
+      },
+      "addrs": [
+        {
+          "addr1": "서울시 강서구",
+          "addr2": "화곡동"
+        },
+        {
+          "addr1": "서울시 관악구",
+          "addr2": "사당동"
+        },
+        {
+          "addr1": "부산시",
+          "addr2": "중구"
+        }
+      ]
+    },
+    "membership": {
+      "grade": "VVVVVVVVVVVVIP",
+      "id": "77777"
+    }
+  },
+  {
+    "info": {
+      "name": {
         "family": "KIM",
         "given": "HS"
       },
@@ -9,14 +36,6 @@
         {
           "addr1": "ABC",
           "addr2": "CDE"
-        },
-        {
-          "addr1": "서울시",
-          "addr2": "강서구"
-        },
-        {
-          "addr1": "부산시",
-          "addr2": "중구"
         }
       ]
     },

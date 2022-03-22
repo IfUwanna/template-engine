@@ -67,7 +67,7 @@ public class TemplateParser {
 
                 if(value instanceof JSONArray) {  // collection >> convertEachTemplate() recursive call   ex) USERS.*.info.addrs
                     result.append(convertEachTemplate(innerTemplate, (JSONArray)value));
-                }else{                           // single object >> replace values ex) USERS.*.membership.id  // 끝까지 파싱 안 된 JSONObject Key일 경우 json데이터 그대로 출력
+                }else{                           // single object >> replace values ex) USERS.*.membership.id
                     result.append(innerTemplate.replace(TemplateParser.extractExpression(innerTemplate),value.toString()));
                 }
             }
@@ -135,11 +135,11 @@ public class TemplateParser {
                 // get iteration value
                 String targetKey = expression.split(" ")[4].trim();   // targetKey : USER.info.addrs
                 Object value = getValue(jsonObject, targetKey);             // addr[]
-                JSONArray arrValue = (JSONArray) value;
+                if(!(value instanceof JSONArray)) throw new TemplateException("반복변환식에서 추출된 데이터가 배열타입이 아닙니다. 추출값=[" + value.toString() + "]");
 
                 // convert innerTemplate (recursion)
                 StringBuilder innerResult = new StringBuilder();
-                innerResult.append(convertEachTemplate(innerTemplate,arrValue));
+                innerResult.append(convertEachTemplate(innerTemplate, (JSONArray) value));
 
                 // replace template
                 template = template.replace(forExpression,innerResult.toString());
@@ -265,7 +265,7 @@ public class TemplateParser {
      * description : JSONObject/JSONArray to value
      * @param obj
      * @param key
-     * @return object (last Depth String value)
+     * @return object
      */
     private static Object getValue(Object obj, String key) {
 
@@ -286,10 +286,10 @@ public class TemplateParser {
                     obj = ((JSONObject) obj).get(keys[j]);
                 }
             }
-            if (obj == null) throw new TemplateException("유효하지 않은 변환식입니다. : " + key);
+            if (obj == null) obj = "";
             return obj;
         }catch(Exception e){
-            throw new TemplateException("데이터 변환 중 오류가 발생하였습니다. " + e.getMessage());
+            throw new TemplateException("getValue() Json 데이터 변환 중 오류가 발생하였습니다. " + e.getMessage());
         }
     }
 

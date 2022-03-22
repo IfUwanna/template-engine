@@ -1,7 +1,7 @@
 [
   {
     "info": {
-      "name" : "수학책",
+      "name": "수학책",
       "contents": [
         {
           "title": "목차1",
@@ -24,12 +24,12 @@
     },
     "price": {
       "normal": "10000",
-      "sale": "9000",
+      "sale": "9000"
     }
   },
   {
     "info": {
-      "name" : "도덕책",
+      "name": "도덕책",
       "contents": [
         {
           "title": "목차1",

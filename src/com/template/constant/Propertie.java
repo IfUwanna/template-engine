@@ -19,6 +19,7 @@ public enum Propertie {
     PREFIX_RESULT("prefix.result"),
     TEMPLATE("template"),
     DATA("data"),
+    DATA_URI("data.uri"),
     RESULT("result");
 
     private final String _key;

@@ -1,14 +1,9 @@
-<? for ID in USERS.*.membership.id ?>
-[ADMIN] Membership Id : <?= ID ?><?= ID ?>\n
-<? endfor ?>
-<? for ID in USERS.*.membership.id ?>
-[ADMIN] Membership Id : <?= ID ?><?= ID ?>\n
-<? endfor ?>
-[User Info]\n
-Family name: <?=USER.info.name.family?>\n
+[User]\n
+family name: <?=USER.info.name.family?>\n
 Given name: <?=USER.info.name.given ?>\n
+middle name: <?=USER.info.name.middle ?>\n
 <? for ADDR in USER.info.addrs ?>
-Address : <?= ADDR.addr1?> <?= ADDR.addr2?>\n
+Address : <?= ADDR.addr1?> / <?= ADDR.addr2?>\n
 <? endfor ?>
-MemberShip : <?=USER.membership.grade?> <?= USER.membership.id ?>\n
+MemberShip : <?=USER.membership.grade?> / <?= USER.membership.id ?>\n
 \n

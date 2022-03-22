@@ -1,10 +1,19 @@
-[Book Info]\n
+[Book Name]\n
 <? for NAME in BOOKS.*.info.name ?>
 NAME : <?= NAME ?>\n
 <? endfor ?>
+\n
+[Book Contents]\n
 <? for CONTENTS in BOOKS.*.info.contents ?>
 contents : <?= CONTENTS.title?> <?= CONTENTS.description?>\n
 <? endfor ?>
+\n
+[Book Quantity]\n
+<? for total in BOOKS.*.quantity.total ?>
+total : <?= total?>\n
+<? endfor ?>
+\n
+[Book Price]\n
 <? for PRICE in BOOKS.*.price.normal ?>
 price : <?= PRICE?>\n
 <? endfor ?>

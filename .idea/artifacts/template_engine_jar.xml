@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="template-engine:jar">
     <output-path>$PROJECT_DIR$</output-path>
-    <root id="archive" name="template.jar">
+    <root id="archive" name="template-engine.jar">
       <element id="module-output" name="template-engine" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/json-simple-1.1.1.jar" path-in-jar="/" />
     </root>

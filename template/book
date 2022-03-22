@@ -1,3 +1,4 @@
+[Book]\n
 name: <?=BOOK.info.name?>\n
 <? for CONTENT in BOOK.info.contents ?>
 contents : <?= CONTENT.title?> / <?= CONTENT.description?>\n

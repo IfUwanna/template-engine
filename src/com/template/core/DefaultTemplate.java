@@ -5,7 +5,6 @@ import com.template.resolver.Resolver;
 import com.template.util.TemplateUtil;
 import org.json.simple.JSONArray;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -13,16 +12,16 @@ import static com.template.core.Template.getTemplateFullPath;
 
 /**
  * packageName    : com.template.core
- * fileName       : UserTemplate
+ * fileName       : DefaultTemplate
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    : User Template
+ * description    : Default Template
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2022/03/18        Jihun Park       최초 생성
  */
-public class UserTemplate implements Template {
+public class DefaultTemplate implements Template {
 
     private String templatePath;        //템플릿 경로
     private String template;            //템플릿
@@ -30,12 +29,12 @@ public class UserTemplate implements Template {
     private Resolver resolver;          //Data Resolver
     private JSONArray data = new JSONArray();
 
-    public UserTemplate(String templateName) {
+    public DefaultTemplate(String templateName) {
         this.templatePath = getTemplateFullPath(templateName);
         this.template = TemplateUtil.readTemplate(templatePath);
     }
 
-    public UserTemplate(String templateName, Resolver resolver) {
+    public DefaultTemplate(String templateName, Resolver resolver) {
         this.templatePath = getTemplateFullPath(templateName);
         this.template = TemplateUtil.readTemplate(templatePath);
         this.resolver = resolver;
@@ -59,7 +58,7 @@ public class UserTemplate implements Template {
     public void write(Writer writer) {
         try {
             writer.write(result);
-            System.out.println("성공적으로 출력 되었습니다. [Using " + writer.getClass().getSimpleName()+"]");
+            //System.out.println("성공적으로 출력 되었습니다. [Using " + writer.getClass().getSimpleName()+"]");
             writer.close();
         } catch (IOException e) {
             throw new TemplateException("결과 출력 중 오류가 발생하였습니다.: " + e.getMessage());

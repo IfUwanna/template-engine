@@ -1,15 +1,29 @@
 [Users name]\n
-<? for Name in USERS.*.info.name.given ?>
-name Id : <?= Name ?>\n
+<? for family in USERS.*.info.name ?>
+Full Name Json : <?= Name ?>\n
 <? endfor ?>
+<? for family in USERS.*.info.name.family ?>
+Family Name : <?= FAMILY ?>\n
+<? endfor ?>
+<? for GIVEN in USERS.*.info.name.given ?>
+Given Name : <?= GIVEN ?>\n
+<? endfor ?>
+<? for middle in USERS.*.info.name.middle ?>
+Middle Name : <?= middle ?>\n
+<? endfor ?>
+
 \n
 [Users Address]\n
 <? for ADDRS in USERS.*.info.addrs ?>
 Address : <?= ADDRS.addr1?> / <?= ADDRS.addr2?>\n
 <? endfor ?>
+
 \n
 [Users Membership]\n
 <? for ID in USERS.*.membership.id ?>
 Membership Id : <?= ID ?>\n
+<? endfor ?>
+<? for GRADE in USERS.*.membership.grade ?>
+Membership GRADE : <?= GRADE ?>\n
 <? endfor ?>
 \n
