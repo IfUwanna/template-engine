@@ -1,7 +1,14 @@
-[User Info]
+Family name: KIM
+Given name: HS
 Address : ABC CDE
+MemberShip : GOLD 12345
+
+Family name: Doe
+Given name: John
 Address : AAA BBB
-Address : 123 234
-Membership Id : 12345
-Membership Id : 67890
-Membership Id : 99999
+MemberShip : SILVER 67890
+
+Family name: Doe
+Given name: Jane
+Address :  
+MemberShip : BRONZE 99999

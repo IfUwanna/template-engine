@@ -67,8 +67,8 @@ public class TemplateParser {
 
                 if(value instanceof JSONArray) {  // collection >> convertEachTemplate() recursive call   ex) USERS.*.info.addrs
                     result.append(convertEachTemplate(innerTemplate, (JSONArray)value));
-                }else{      // single object >> replace values ex) USERS.*.membership.id
-                    result.append(innerTemplate.replace(TemplateParser.extractExpression(innerTemplate),(String)value));
+                }else{                           // single object >> replace values ex) USERS.*.membership.id  // 끝까지 파싱 안 된 JSONObject Key일 경우 json데이터 그대로 출력
+                    result.append(innerTemplate.replace(TemplateParser.extractExpression(innerTemplate),value.toString()));
                 }
             }
             template = template.replace(forExpression,result.toString());
@@ -122,7 +122,7 @@ public class TemplateParser {
                 Object value = getValue(jsonObject, replaceKey);
 
                 // replace template
-                template = template.replace(expression,(String)value);
+                template = template.replace(expression,value.toString());
 
             }else if(expression.indexOf(ITERATION_PREFIX.getEx()) > -1){  /*== iteration operation ==*/
 

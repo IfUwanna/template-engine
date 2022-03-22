@@ -33,7 +33,7 @@ public class FileResolver implements Resolver {
         try{
             return new FileReader(data);
         }catch(FileNotFoundException e){
-            throw new TemplateException("파일을 찾을 수 없습니다.: " + data);
+            throw new TemplateException("Data 파일을 찾을 수 없습니다.: " + data);
         }
     }
 }

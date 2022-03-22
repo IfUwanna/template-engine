@@ -1,8 +1,0 @@
-[User Info]\n
-<? for ADDRS in USERS.*.info.addrs ?>
-Address : <?= ADDRS.addr1?> <?= ADDRS.addr2?>\n
-<? endfor ?>
-<? for ID in USERS.*.membership.id ?>
-Membership Id : <?= ID ?>\n
-<? endfor ?>
-\n

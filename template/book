@@ -2,6 +2,6 @@ name: <?=BOOK.info.name?>\n
 <? for CONTENT in BOOK.info.contents ?>
 contents : <?= CONTENT.title?> / <?= CONTENT.description?>\n
 <? endfor ?>
-quantity : <?=BOOK.quantity.total ?>/<?=BOOK.quantity.ordered ?>/<?=BOOK.quantity.remain ?>\n
+quantity : <?=BOOK.quantity.total ?> / <?=BOOK.quantity.ordered ?> / <?=BOOK.quantity.remain ?>\n
 price: <?=BOOK.price.normal ?> >> <?=BOOK.price.sale ?> sale!\n
 \n

@@ -5,6 +5,7 @@ import com.template.resolver.Resolver;
 import com.template.util.TemplateUtil;
 import org.json.simple.JSONArray;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -58,7 +59,7 @@ public class UserTemplate implements Template {
     public void write(Writer writer) {
         try {
             writer.write(result);
-            System.out.println("성공적으로 출력 되었습니다. : "  + writer.getClass().getSimpleName());
+            System.out.println("성공적으로 출력 되었습니다. [Using " + writer.getClass().getSimpleName()+"]");
             writer.close();
         } catch (IOException e) {
             throw new TemplateException("결과 출력 중 오류가 발생하였습니다.: " + e.getMessage());
