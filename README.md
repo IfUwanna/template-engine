@@ -80,7 +80,7 @@ usage: ./template.sh [tempalte] [data]
 
 ## Example Samples
 
-> 확인하시기 쉽게 파일 출력(output.txt)외에 PrintWriter System 출력을 추가해 뒀습니다.   
+> 확인하시기 쉽게 파일 출력(output.txt)과 더불어 PrintWriter System 출력도 추가해 뒀습니다.   
 > book 템플릿 예제 확인시 꼭 data를 book.json 으로 변경해 주세요.
 ### 1. sample_easy / user.json  - 난이도 하
 ```text
