@@ -12,9 +12,6 @@
     - 특정필드가 명시된 로직 없음! 템플릿 명시 필드명 기준 추출 ex)book 샘플
     - 템플릿에 명시된 키가 최종 파싱되는 키값이 아닐 경우는 하위 JSON 문자열로 그대로 출력
 - `Writer` 전달 받아 원하는 양식으로 출력 가능  (File, System 등)
-- Template, Data 리소스 적용 지정  
-  - 1순위 args[]
-  - 2순위 template.properties
 - `TemplateException` 을 통한 예외처리
 
 ## Structure
@@ -40,6 +37,9 @@
 └── output.txt            # Default Result file
 ```
 ### template.properties
+- Template, Data 리소스 적용 지정
+  - 1순위 args[]
+  - 2순위 template.properties
 ```properties
 # Base Location
 prefix.template=template/
@@ -62,6 +62,7 @@ result=output.txt
 # user_custom.json
 # book.json
 ```
+
 ## Usage
 ```bash
 #java 11+
