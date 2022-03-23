@@ -1,4 +1,18 @@
-Admin
-Membership Id : 12345
-Membership Id : 67890
-Membership Id : 99999
+[Book Name]
+NAME : 수학책
+NAME : 도덕책
+
+[Book Contents]
+contents : 목차1 111
+contents : 목차2 222
+contents : 목차3 333
+contents : 목차1 111
+contents : 목차2 222
+
+[Book Quantity]
+total : 100
+total : 999
+
+[Book Price]
+price : 10000
+price : 30000

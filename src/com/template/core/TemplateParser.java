@@ -155,11 +155,11 @@ public class TemplateParser {
     }
 
     /**
-     * methodName : extractExpression
+     * methodName : isTopTemplate
      * author : Jihun Park
-     * description : extract Expression <? ~ ?>
+     * description : 최상위 템플릿 여부 반환
      * @param template
-     * @return string
+     * @return boolean
      */
     private static boolean isTopTemplate(String template){
 
@@ -168,8 +168,8 @@ public class TemplateParser {
 
         while(start > -1) {
             String iterationExpression = template.substring(start,end);
-            String targetKey = iterationExpression.split(" ")[4].trim();   // targetKey : USERS.*.membership.id
-            if("*".equals(targetKey.split("\\.")[1])) { // USERS 단위 변환 표현식
+            String targetKey = iterationExpression.split(" ")[4].trim();   // ex) USERS.*.membership.id
+            if("*".equals(targetKey.split("\\.")[1])) { // 전체 표현식
                 return true;
             }
             start = template.indexOf(ITERATION_PREFIX.getEx(), start + 1);

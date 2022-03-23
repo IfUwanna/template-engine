@@ -5,7 +5,7 @@ package com.template.exception;
  * fileName       : TemplateException
  * author         : Jihun Park
  * date           : 2022/03/18
- * description    : Template Exception
+ * description    : Template Exception handler
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------

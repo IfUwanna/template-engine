@@ -30,7 +30,7 @@ public class Main {
 
         // 3. Write
         template.write(TemplateUtil.getDefaultFileWriter()); // write File
-        template.write(new PrintWriter(System.out));         // write System(참고용)
+        template.write(new PrintWriter(System.out));         // write System (출력내용 참고용)
 
     }
 }
