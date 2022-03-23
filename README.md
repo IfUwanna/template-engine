@@ -1,7 +1,5 @@
-# template-engine
-> Collection을 주어진 템플릿에 맞게 변환하여 출력하는 템플릿 엔진입니다.  
-
-
+# `template-engine`
+> Collection을 주어진 템플릿에 맞게 변환하여 출력하는 템플릿 엔진입니다.   
 
 ## Description
 
