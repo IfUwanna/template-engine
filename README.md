@@ -11,7 +11,6 @@
     - 내부 템플릿 반복 변환 재귀호출 구조
     - 특정필드가 명시된 로직 없음! 템플릿 명시 필드명 기준 추출 ex)book 샘플
     - 템플릿에 명시된 키가 최종 파싱되는 키값이 아닐 경우는 하위 JSON 문자열로 그대로 출력
-    - `getKey(Object obj, String key)`
 - `Writer` 전달 받아 원하는 양식으로 출력 가능  (File, System 등)
 - Template, Data 리소스 적용 지정  
   - 1순위 args[]
