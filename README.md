@@ -37,7 +37,7 @@
 └── output.txt            # Default Result file
 ```
 ### template.properties
-- Template, Data 리소스 적용 지정
+- Template, Data 적용 우선순위
   - 1순위 args[]
   - 2순위 template.properties
 ```properties
