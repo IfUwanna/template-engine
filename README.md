@@ -3,7 +3,7 @@
 
 ## Description
 
-- _**Template 구조와 Entity 구조만 일치하면 모든 데이터 처리 가능**_
+- _**Template 구조와 Entity 구조만 일치하면 모든 Json데이터 처리 가능**_
 - `Template` 구현을 통한 기능 확장 가능
 - `Resolver` 구현을 통해 파일, 웹 리소스등 `Reader` 선택 가능 
     - `FileResolver`, `URIResolver` 구현
@@ -80,8 +80,7 @@ usage: ./template.sh [tempalte] [data]
 
 ## Example Samples
 
-> 확인하시기 쉽게 파일 출력(output.txt)과 더불어 PrintWriter System 출력도 추가해 뒀습니다.   
-> book 템플릿 예제 확인시 꼭 data를 book.json 으로 변경해 주세요.
+> 확인하시기 쉽게 파일 출력(output.txt)과 더불어 PrintWriter System 출력도 추가해 뒀습니다.
 ### 1. sample_easy / user.json  - 난이도 하
 ```text
 ➜  template-engine (master) ✗ ./template.sh sample_easy user.json
