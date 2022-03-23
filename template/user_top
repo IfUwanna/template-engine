@@ -11,13 +11,11 @@ Given Name : <?= GIVEN ?>\n
 <? for middle in USERS.*.info.name.middle ?>
 Middle Name : <?= middle ?>\n
 <? endfor ?>
-
 \n
 [Users Address]\n
 <? for ADDRS in USERS.*.info.addrs ?>
 Address : <?= ADDRS.addr1?> / <?= ADDRS.addr2?>\n
 <? endfor ?>
-
 \n
 [Users Membership]\n
 <? for ID in USERS.*.membership.id ?>
