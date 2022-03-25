@@ -53,7 +53,7 @@ data.uri = https://gist.githubusercontent.com/IfUwanna/49944ed3a3de81e719f2db146
 result=output.txt
 
 ### template sample
-# sample(하,중,상) : sample_easy / sample_medium / sample_hard
+# sample : sample_easy / sample_medium / sample_hard
 # custom-user : user / user_top
 # custom-book : book / book_top [!!change data ::: book.json]
 
@@ -69,9 +69,9 @@ result=output.txt
 usage: ./template.sh [tempalte] [data] 
 
 ./template.sh 
-./template.sh sample_easy user.json      # 난이도 하 
-./template.sh sample_medium user.json    # 난이도 중
-./template.sh sample_hard user.json      # 난이도 상 
+./template.sh sample_easy user.json      # user 
+./template.sh sample_medium user.json    # user
+./template.sh sample_hard user.json      # user
 ./template.sh user user.json             # user (custom template)
 ./template.sh user_top user.json         # user (custom template)
 ./template.sh book book.json             # book (custom template)
@@ -81,7 +81,7 @@ usage: ./template.sh [tempalte] [data]
 ## Example Samples
 
 > 확인하시기 쉽게 파일 출력(output.txt)과 더불어 PrintWriter System 출력도 추가해 뒀습니다.
-### 1. sample_easy / user.json  - 난이도 하
+### 1. sample_easy / user.json 
 ```text
 ➜  template-engine (master) ✗ ./template.sh sample_easy user.json
 ================ Jihun template-engine start :) ================
@@ -101,7 +101,7 @@ Address :
 MemberShip : BRONZE 99999
 
 ```
-### 2. sample_medium / user.json  - 난이도 중
+### 2. sample_medium / user.json
 ```text
 ➜  template-engine (master) ✗ ./template.sh sample_medium user.json
 ================ Jihun template-engine start :) ================
@@ -115,7 +115,7 @@ Address : 123 234
 Name: Jane Doe
 
 ```
-### 3. sample_hard / user.json  - 난이도 상
+### 3. sample_hard / user.json
 ```text
 ➜  template-engine (master) ✗ ./template.sh sample_hard user.json
 ================ Jihun template-engine start :) ================
