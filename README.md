@@ -66,7 +66,7 @@ result=output.txt
 ## Usage
 ```bash
 #java 11+
-usage: ./template.sh [tempalte] [data] 
+usage: ./template.sh [template] [data] 
 
 ./template.sh 
 ./template.sh sample_easy user.json      # user 
